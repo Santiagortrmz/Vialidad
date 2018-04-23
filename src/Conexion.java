@@ -5,14 +5,27 @@ public class Conexion {
 	Connection c;
 	ResultSet rs;
 	
-	public Connection conectar() {
+	public ResultSet query(String sentence) {
 		try {
 			c = DriverManager.getConnection(url,usuario,contra);
-			
+			Statement stm = c.createStatement();
+			rs = stm.executeQuery(sentence);
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public void update(String sentence) {
+		try {
+			c = DriverManager.getConnection(url,usuario,contra);
+			Statement stm = c.createStatement();
+			stm.executeUpdate(sentence);
+			c.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return c;
 	}
 }

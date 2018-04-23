@@ -18,6 +18,7 @@ public class Login extends JFrame implements ActionListener{
 	JButton btnRegistrarse = new JButton("Registrarse"),btnIngresar = new JButton("Ingresar");;
 	Tarjeta tar = new Tarjeta();
 	Registrar reg = new Registrar();
+	Usuarios u = new Usuarios();
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 237, 300);
@@ -71,5 +72,9 @@ public class Login extends JFrame implements ActionListener{
 			this.setVisible(false);
 		}
 		
+		if(e.getSource()==reg.btnRegistrar) 
+		{
+			u.crearusuario(reg.txtUsuario, reg.txtContra,reg.txtNombre,reg.txtApellido1,reg.txtApellido2,reg.lblError);
+		}
 	}
 }
